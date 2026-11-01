@@ -102,7 +102,6 @@ function finishGame(won, message) {
     score = 100 + seconds * 2;
     flow.classList.add('running');
     reservoirWater.style.height = '18%';
-    animationId = setTimeout(() => villageWater.classList.add('full'), 2400);
   }
   updateDisplay();
 }
@@ -192,26 +191,34 @@ function startGame() {
 
 
 // this resets everything back to the starting state so the player can try again.
+
 function resetGame() {
   clearInterval(timerId);
   clearTimeout(animationId);
+
   timerId = null;
   animationId = null;
-  gate1Open = false;
-  gate2Open = false;
-  powerReady = false;
+
+  powerOn = false;
+  gateOpen = false;
+  valveOpen = true;
+
   gameStarted = false;
   gameOver = false;
   seconds = 60;
   score = 0;
+
   startBtn.disabled = false;
-  switches.forEach(button => button.classList.remove('active'));
+
   flow.classList.remove('running');
   reservoirWater.style.height = '76%';
   villageWater.classList.remove('full');
-  feedback.textContent = 'Press Start to begin. Then click the three switches in the scene.';
+
+  feedback.textContent = 'Press Start to restore the water supply.';
+
   updateDisplay();
 }
+
 
 // this connects each switch button to the correct function when the player clicks it.
 powerBreaker.addEventListener('click', togglePower);
@@ -221,15 +228,23 @@ safetyValve.addEventListener('click', toggleSafetyValve);
 startBtn.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
 
-// this checks whether both gates are open before letting the player release the water.
+// this checks the control statuses when trying to release the water
 releaseBtn.addEventListener('click', () => {
   if (!gameStarted || gameOver) return;
-  if (gate1Open && gate2Open) {
+
+  if (!powerOn) { // If the power is off it will display a message
+    feedback.textContent = 'The pump cannot operate without power.';
+  } else if (!gateOpen) { // If the gate is closed it will display a message
+    feedback.textContent = 'The floodgate is closed. Water cannot pass through.';
+  } else if (valveOpen) { // If the safety valave is open it will display a message
+    feedback.textContent = 'The safety valve is open. Close it to build pressure.';
+  } else { // If all else is not true it will display a success message
     finishGame(true, 'Success! Clean water is flowing to the village!');
-  } else {
-    finishGame(false, 'The water was blocked by a closed gate. Restart and try another sequence.');
   }
-});
+}); 
+/* Basiccaly when the "Release Water" button is pressed it will first check if the power is on, 
+if the gate is open, and if the safety valve is closed. */
+
 
 // this runs once at the start so the game begins in a clean reset state.
 resetGame();
