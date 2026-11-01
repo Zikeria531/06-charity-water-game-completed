@@ -33,57 +33,64 @@ let animationId = null;
 
 
 
-// this updates the UI in a more step-by-step way so it's easier to understand what is changing.
+// Create a function to update the UI
 function updateDisplay() {
-  // first, update the gate visuals
-  if (gate1Open) {
-    gateElements[0].classList.add('open');
+
+  // Update the floodgate
+  if (gateOpen) {
+    gateElement.classList.add('open');
   } else {
-    gateElements[0].classList.remove('open');
+    gateElement.classList.remove('open');
   }
 
-  if (gate2Open) {
-    gateElements[1].classList.add('open');
+  // Update the power breaker indicator
+  if (powerOn) {
+    powerBreaker.classList.add('active');
   } else {
-    gateElements[1].classList.remove('open');
+    powerBreaker.classList.remove('active');
   }
 
-  // then update the text that says whether each gate is open or closed
-  const gate1Status = document.getElementById('status1');
-  const gate2Status = document.getElementById('status2');
-
-  if (gate1Open) {
-    gate1Status.textContent = 'Gate 1: Open';
+  // Update the floodgate control indicator
+  if (gateOpen) {
+    floodgateControl.classList.add('active');
   } else {
-    gate1Status.textContent = 'Gate 1: Closed';
+    floodgateControl.classList.remove('active');
   }
 
-  if (gate2Open) {
-    gate2Status.textContent = 'Gate 2: Open';
+  // Update the safety valve indicator. If the safety valve is closed, it's indicator should turn green.
+  if (!valveOpen) {
+    safetyValve.classList.add('active');
   } else {
-    gate2Status.textContent = 'Gate 2: Closed';
+    safetyValve.classList.remove('active');
   }
 
-  // then update the score and timer numbers
+  // Update the floodgate status
+  const gateStatus = document.getElementById('status1');
+
+  if (gateOpen) {
+    gateStatus.textContent = 'Floodgate: Open';
+  } else {
+    gateStatus.textContent = 'Floodgate: Closed';
+  }
+
+  // Update the timer and score
   timerDisplay.textContent = seconds;
   scoreDisplay.textContent = score;
 
-  // then decide if the release button should be usable
-  if (gameStarted && !gameOver) {
+  // Enable or disable the controls
+  if (gameStarted && !gameOver) { // 
+    powerBreaker.disabled = false;
+    floodgateControl.disabled = false;
+    safetyValve.disabled = false;
     releaseBtn.disabled = false;
-  } else {
+  } else { //
+    powerBreaker.disabled = true;
+    floodgateControl.disabled = true;
+    safetyValve.disabled = true;
     releaseBtn.disabled = true;
   }
-
-  // then decide if the switch buttons should be usable
-  for (let i = 0; i < switches.length; i++) {
-    if (gameStarted && !gameOver) {
-      switches[i].disabled = false;
-    } else {
-      switches[i].disabled = true;
-    }
-  }
 }
+
 
 
 // Create a function that ends the round and shows either a win or lose message depending on the results or what happened.
