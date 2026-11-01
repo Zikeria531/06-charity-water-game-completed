@@ -25,7 +25,7 @@ let gateOpen = false; // The floodgate starts closed
 let valveOpen = true; // The safety valve starts open
 let gameStarted = false; // This indicates the player hasn't started the round yet
 
-let gameOver = false;
+let gameOver = false; // This indicates the game has not ended yet
 let seconds = 60;
 let score = 0;
 let timerId = null;
@@ -108,32 +108,55 @@ function finishGame(won, message) {
 }
 
 
-// this handles clicking each switch and changes the gates based on the sequence of presses.
-function activateSwitch(index) {
-  if (!gameStarted || gameOver) return;
-  switches[index].classList.add('active');
-  // the correct sequence is left -> middle -> right, so the puzzle follows that order.
-  // when the middle switch is pressed, it closes gate 1 and opens gate 2.
-  if (index === 0) {
-    powerReady = true;
-    gate1Open = true;
-    feedback.textContent = 'A mechanism hums to life. Gate 1 opens!';
-  } else if (index === 1) {
-    if (!powerReady) {
-      feedback.textContent = 'Nothing happens. This mechanism may need power first.';
-    } else {
-      gate1Open = false;
-      gate2Open = true;
-      feedback.textContent = 'Gate 2 opens, but Gate 1 closes!';
-    }
-  } else {
-    if (powerReady && gate2Open) {
-      gate1Open = true;
-      feedback.textContent = 'Gate 1 reopens. Both gates are clear!';
-    } else {
-      feedback.textContent = 'The final mechanism is locked. Try the other switches.';
-    }
+// Create a function for the power breaker
+function togglePower() {
+  if (!gameStarted || gameOver) return; // If the game has started and the game isn't over yet return something
+
+  powerOn = !powerOn; 
+  // This will reverse the current value of powerOn. If power is off, clicking the breaker turns it on. 
+  // Clicking it again turns it off.
+
+  if (powerOn) { // If the power is on it will display a confirmation message
+    feedback.textContent = 'Power restored to the pumping station!';
+  } else { // If power is off it will display a message indicating that it is off
+    feedback.textContent = 'Power has been turned off.';
   }
+
+  updateDisplay();
+}
+
+// Create a function for the floodgate control
+function toggleFloodgate() {
+  if (!gameStarted || gameOver) return;
+
+  if (!powerOn) { // If the power is off it will display a message
+    feedback.textContent = 'The floodgate requires power to operate.';
+    return;
+  }
+
+  gateOpen = !gateOpen; // The status of the gate becomes true, so the gate is now open.
+
+  if (gateOpen) { // If the gate is open it will display a message
+    feedback.textContent = 'The floodgate is now open.';
+  } else { // If the gate is open it will display a message
+    feedback.textContent = 'The floodgate is now closed.';
+  }
+
+  updateDisplay();
+}
+
+// Create a function for the safety valve
+function toggleSafetyValve() {
+  if (!gameStarted || gameOver) return;
+
+  valveOpen = !valveOpen; // The safety valve staus is reversed to false, so the safety valve is now closed
+
+  if (valveOpen) { 
+    feedback.textContent = 'The safety valve is open. Pressure is being released.';
+  } else {
+    feedback.textContent = 'The safety valve is closed. Pressure can build in the system.';
+  }
+
   updateDisplay();
 }
 
@@ -191,7 +214,10 @@ function resetGame() {
 }
 
 // this connects each switch button to the correct function when the player clicks it.
-switches.forEach((button, index) => button.addEventListener('click', () => activateSwitch(index)));
+powerBreaker.addEventListener('click', togglePower);
+floodgateControl.addEventListener('click', toggleFloodgate);
+safetyValve.addEventListener('click', toggleSafetyValve);
+
 startBtn.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
 
