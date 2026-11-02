@@ -336,6 +336,13 @@ h1 {
   background: #8ab9cc;
 }
 
+/* Window lights up when water reaches the village */
+.village.delivered .window {
+  background: #ffc907;
+  box-shadow: 0 0 15px #ffc907;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
 /* this moves the village label down near the bottom of the house. */
 .village .scene-label {
   top: 95%;
