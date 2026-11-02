@@ -29,7 +29,6 @@ const circuitFeedback = document.getElementById('circuitFeedback');
 
 const flow = document.getElementById('flow');
 const reservoirWater = document.getElementById('reservoirWater');
-const villageWater = document.getElementById('villageWater');
 const village = document.querySelector('.village');
 
 // Create and declare game state variables 
@@ -276,7 +275,6 @@ function resetGame() {
 
   flow.classList.remove('running');
   reservoirWater.style.height = '76%';
-  villageWater.classList.remove('full');
   village.classList.remove('delivered'); // Remove the village's delivered state
 
   feedback.textContent = 'Press Start to restore the water supply.';
