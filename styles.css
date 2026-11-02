@@ -806,7 +806,7 @@ body:has(.circuit-panel:not([hidden]))::before {
 
   /* this shrinks the switch size a bit for mobile. */
   .switch {
-    top: 81%;
+    top: 65%;
     border-width: 2px;
   }
 
