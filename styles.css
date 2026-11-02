@@ -461,7 +461,7 @@ h1 {
 .floodgate-control .switch-indicator {
   position: absolute;
   width: 12px;
-  height: 12px;
+  height: 42px;
   top: 6px;
   right: 6px;
   border-radius: 50%;
