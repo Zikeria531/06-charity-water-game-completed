@@ -801,6 +801,14 @@ body:has(.circuit-panel:not([hidden]))::before {
   background: #2E9DF7;
 }
 
+/* Charity: water logo in the header */
+.charity-logo {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 
 
@@ -928,6 +936,11 @@ body:has(.circuit-panel:not([hidden]))::before {
   /* this makes the last button stretch across both columns. */
   .controls button:last-child {
     grid-column: 1/-1;
+  }
+
+  /* Charity water logo */
+  .charity-logo {
+    width: 110px;
   }
 
 }
