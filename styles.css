@@ -311,7 +311,7 @@ h1 {
   top: 95%;
 }
 
-/* this controls the look of the three mystery switches on the scene. */
+/* this controls the shared styling of the three machinery controls. */
 .switch {
   position: absolute;
   top: 82%;
