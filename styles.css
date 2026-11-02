@@ -459,14 +459,24 @@ button:focus-visible {
 
 /* Power breaker circuit puzzle */
 .circuit-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+
   background: #ffffff;
   border: 3px solid #19374b;
   border-radius: 16px;
   padding: 20px;
-  margin: 20px auto;
-  max-width: 520px;
   text-align: center;
-  box-shadow: 0 6px 0 #19374b;
+  box-shadow: 0 8px 0 #19374b;
+
+  z-index: 1000;
 }
 
 .circuit-panel[hidden] {
