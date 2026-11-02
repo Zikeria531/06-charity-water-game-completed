@@ -482,7 +482,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   padding: 20px 10px;
   margin: 18px 0;
   background: #19374b;
@@ -496,21 +496,79 @@ button:focus-visible {
   font-weight: bold;
 }
 
+
+.wire-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(2, 60px);
+  gap: 0;
+}
+
 .wire-piece {
-  width: 65px;
-  height: 65px;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  position: relative;
+  border: 1px solid #ffffff;
+  border-radius: 0;
   background: #2e9df7;
-  color: #ffc907;
-  font-size: 42px;
-  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  overflow: hidden;
 }
 
 .wire-piece:hover {
   background: #2385d6;
+}
+
+.wire-one {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.wire-two {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.wire-three {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.wire-shape {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.corner-wire::before,
+.corner-wire::after,
+.straight-wire::before {
+  content: '';
+  position: absolute;
+  background: #ffc907;
+}
+
+.corner-wire::before {
+  width: 8px;
+  height: 50%;
+  left: calc(50% - 4px);
+  top: 0;
+}
+
+.corner-wire::after {
+  width: 50%;
+  height: 8px;
+  left: 50%;
+  top: calc(50% - 4px);
+}
+
+.straight-wire::before {
+  width: 8px;
+  height: 100%;
+  left: calc(50% - 4px);
+  top: 0;
 }
 
 #circuitFeedback {
