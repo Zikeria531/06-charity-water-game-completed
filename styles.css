@@ -376,7 +376,7 @@ h1 {
 /* Power breaker control */
 .breaker-control {
   width: 65px;
-  height: 75px;
+  height: 70px;
   background: #dce7ed;
   border: 3px solid #19374b;
   border-radius: 10px;
@@ -422,7 +422,7 @@ h1 {
 /* Floodgate control */
 .floodgate-control {
   width: 70px;
-  height: 75px;
+  height: 70px;
   background: #879aa6;
   border: 3px solid #19374b;
   border-radius: 12px;
