@@ -804,10 +804,64 @@ body:has(.circuit-panel:not([hidden]))::before {
     aspect-ratio: 16/12;
   }
 
-  /* this shrinks the switch size a bit for mobile. */
+  
+  /* Smaller machinery controls on mobile */
   .switch {
-    top: 65%;
+    top: 78%;
+    width: 38px;
+    height: 38px;
     border-width: 2px;
+  }
+
+  /* Smaller power breaker */
+  .breaker-control {
+    width: 38px;
+    height: 42px;
+  }
+
+  .breaker-lever {
+    width: 8px;
+    height: 22px;
+    border-width: 2px;
+  }
+
+  /* Smaller floodgate control */
+  .floodgate-control {
+    width: 38px;
+    height: 38px;
+  }
+
+  .floodgate-lever {
+    width: 8px;
+    height: 25px;
+    border-width: 2px;
+  }
+
+  /* Smaller safety valve */
+  .valve-control {
+    width: 38px;
+    height: 38px;
+  }
+
+  .valve-wheel {
+    width: 25px;
+    height: 25px;
+    border-width: 4px;
+  }
+
+  .valve-spoke {
+    width: 20px;
+    height: 4px;
+  }
+
+  /* Smaller indicator lights */
+  .breaker-control .switch-indicator,
+  .floodgate-control .switch-indicator,
+  .valve-control .switch-indicator {
+    width: 7px;
+    height: 7px;
+    top: 3px;
+    right: 3px;
   }
 
   /* this keeps the gate status text readable on tiny screens. */
