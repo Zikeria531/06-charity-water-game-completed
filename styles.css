@@ -164,7 +164,7 @@ h1 {
 
 
 /* Crack on the reservoir wall */
-.reservoir-crack {
+/*.reservoir-crack {
   position: absolute;
   right: 3px;
   top: 35%;
@@ -184,10 +184,10 @@ h1 {
     0% 35%
   );
   z-index: 3;
-}
+} */
 
 /* Water escaping through the crack */
-.reservoir-leak {
+/*.reservoir-leak {
   position: absolute;
   right: -17px;
   top: 55%;
@@ -197,7 +197,7 @@ h1 {
   border-radius: 0 8px 8px 0;
   transform: rotate(20deg);
   z-index: 2;
-}
+} */
 
 
 /* this styles the labels like RESERVOIR and VILLAGE so they sit on top of the scene. */
