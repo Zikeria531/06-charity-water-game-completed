@@ -423,7 +423,7 @@ h1 {
 .floodgate-control {
   width: 70px;
   height: 70px;
-  background: #879aa6;
+  background: #dce7ed;
   border: 3px solid #19374b;
   border-radius: 12px;
   display: flex;
@@ -470,7 +470,7 @@ h1 {
 .valve-control {
   width: 65px;
   height: 70px;
-  background: #879aa6;
+  background: #dce7ed;
   border: 3px solid #19374b;
   border-radius: 12px;
   display: flex;
