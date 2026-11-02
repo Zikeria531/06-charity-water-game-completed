@@ -104,15 +104,15 @@
 
         <div class="wire-layout"> <!-- The button will represent the stationary blue tile, while the span will represent the rotating yellow wire. -->
           <button class="wire-piece wire-one" id="wire1" aria-label="Rotate first wire">
-            <span class="wire-shape corner-wire"></span> <!-- corner-wire will have two connections at a 90-degree angle -->
-          </button>
-
-          <button class="wire-piece wire-two" id="wire2" aria-label="Rotate second wire">
             <span class="wire-shape straight-wire"></span> <!-- straight-wire will have connections on opposite sides -->
           </button>
 
+          <button class="wire-piece wire-two" id="wire2" aria-label="Rotate second wire">
+            <span class="wire-shape corner-wire"></span> 
+          </button>
+
           <button class="wire-piece wire-three" id="wire3" aria-label="Rotate third wire">
-            <span class="wire-shape corner-wire"></span>
+            <span class="wire-shape corner-wire"></span> <!-- corner-wire will have two connections at a 90-degree angle -->
           </button>
         </div>
 
