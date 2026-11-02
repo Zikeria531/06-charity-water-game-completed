@@ -15,6 +15,18 @@ const safetyValve = document.getElementById('safetyValve');
 
 const gateElement = document.getElementById('gate1'); // Level 1 will only have one floodgate
 
+// Declare elements for the circuit panel
+const circuitPanel = document.getElementById('circuitPanel');
+const closeCircuitBtn = document.getElementById('closeCircuitBtn');
+const testCircuitBtn = document.getElementById('testCircuitBtn');
+// Declare elements for the circuit wires
+const wire1 = document.getElementById('wire1');
+const wire2 = document.getElementById('wire2');
+const wire3 = document.getElementById('wire3');
+
+const circuitFeedback = document.getElementById('circuitFeedback');
+
+
 const flow = document.getElementById('flow');
 const reservoirWater = document.getElementById('reservoirWater');
 const villageWater = document.getElementById('villageWater');
@@ -108,21 +120,26 @@ function finishGame(won, message) {
 
 
 // Create a function for the power breaker
-function togglePower() {
-  if (!gameStarted || gameOver) return; // If the game has started and the game isn't over yet return something
+function togglePower() { 
+  // The power should already be off but if it's on, clicking the breaker turns it off. 
+  // And if it's off clicking the breaker opens the circuit panel.
+  if (!gameStarted || gameOver) return;
 
-  powerOn = !powerOn; 
-  // This will reverse the current value of powerOn. If power is off, clicking the breaker turns it on. 
-  // Clicking it again turns it off.
-
-  if (powerOn) { // If the power is on it will display a confirmation message
-    feedback.textContent = 'Power restored to the pumping station!';
-  } else { // If power is off it will display a message indicating that it is off
+  if (!powerOn) {
+    circuitPanel.hidden = false;
+    feedback.textContent = 'Repair the electrical circuit to restore power.';
+  } else {
+    powerOn = false;
     feedback.textContent = 'Power has been turned off.';
+    updateDisplay();
   }
-
-  updateDisplay();
 }
+
+// Create a function to close the panel
+function closeCircuitPanel() { // It will allow the player to leave the puzzle and come back later
+  circuitPanel.hidden = true;
+}
+
 
 // Create a function for the floodgate control
 function toggleFloodgate() {
@@ -209,6 +226,7 @@ function resetGame() {
   score = 0;
 
   startBtn.disabled = false;
+  circuitPanel.hidden = true; // This ensures the circuit panel is hidden whenever the player restarts.
 
   flow.classList.remove('running');
   reservoirWater.style.height = '76%';
@@ -227,6 +245,7 @@ safetyValve.addEventListener('click', toggleSafetyValve);
 
 startBtn.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
+closeCircuitBtn.addEventListener('click', closeCircuitPanel);
 
 // this checks the control statuses when trying to release the water
 releaseBtn.addEventListener('click', () => {
