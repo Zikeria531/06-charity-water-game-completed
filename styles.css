@@ -488,6 +488,15 @@ button:focus-visible {
   color: #19374b;
 }
 
+/* Unsure if this is corrrect */
+body:has(.circuit-panel:not([hidden]))::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+}
+
 .circuit-board {
   display: flex;
   align-items: center;
