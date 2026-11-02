@@ -146,7 +146,6 @@ function closeCircuitPanel() { // It will allow the player to leave the puzzle a
 
 // Create the rotation functions
 function rotateWire1() {
-  console.log('Wire 1 was clicked'); // temporarily here to make sure its being called
   wire1Rotation = (wire1Rotation + 1) % 4; // the remainder is there to loop the rotation state back to 0 so the numbers stay between 0 and 3.
   wire1.querySelector('.wire-shape').style.transform = `rotate(${wire1Rotation * 90}deg)`; // this will take the rotation value, multiply it by 90, and apply the resulting angle to the element.
 }
@@ -165,8 +164,7 @@ function rotateWire3() {
 
 // Create a circuit validation function
 function testCircuit() {
-  console.log('Wire rotations:', wire1Rotation, wire2Rotation, wire3Rotation); // just for testing
-  if (wire1Rotation === 1 && wire2Rotation === 2 && wire3Rotation === 1) {
+  if (wire1Rotation === 1 && wire2Rotation === 3 && wire3Rotation === 1) {
     powerOn = true;
 
     circuitFeedback.textContent = 'Circuit complete! Power has been restored.';
