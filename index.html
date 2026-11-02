@@ -92,6 +92,36 @@
 
     <!-- Feedback area keeps the player informed during the game -->
     <p class="feedback" id="feedback" role="status" aria-live="polite">Press Start to begin. Then click the three switches in the scene.</p>
+     
+    <!-- Create the Power breaker circuit puzzle -->
+    <div class="circuit-panel" id="circuitPanel" hidden> <!-- circuit-panel is the container for the mini game. The hidden attribute means it should start out as invisible -->
+      <h2>Restore Power</h2>
+      <p>Rotate the wires to complete the electrical circuit.</p>
+
+      <div class="circuit-board">
+        <span class="power-source">POWER</span>
+
+        <button class="wire-piece" id="wire1" aria-label="Rotate first wire">
+          └
+        </button>
+
+        <button class="wire-piece" id="wire2" aria-label="Rotate second wire">
+          └
+        </button>
+
+        <button class="wire-piece" id="wire3" aria-label="Rotate third wire">
+          └
+        </button>
+
+        <span class="power-output">OUTPUT</span>
+      </div>
+
+      <p id="circuitFeedback">Connect the wires to restore power.</p>
+
+      <button id="testCircuitBtn">Test Circuit</button> <!-- this will check whether the circuit has been connected correctly -->
+      <button id="closeCircuitBtn">Close Panel</button> <!-- this will allow players to return to the main game without solving the puzzle -->
+    </div>
+
 
     <!-- Buttons for starting, releasing water, and restarting the round -->
     <div class="controls">
