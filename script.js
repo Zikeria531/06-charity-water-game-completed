@@ -148,17 +148,17 @@ function closeCircuitPanel() { // It will allow the player to leave the puzzle a
 function rotateWire1() {
   console.log('Wire 1 was clicked'); // temporarily here to make sure its being called
   wire1Rotation = (wire1Rotation + 1) % 4; // the remainder is there to loop the rotation state back to 0 so the numbers stay between 0 and 3.
-  wire1.style.transform = `rotate(${wire1Rotation * 90}deg)`; // this will take the rotation value, multiply it by 90, and apply the resulting angle to the element.
+  wire1.querySelector('.wire-shape').style.transform = `rotate(${wire1Rotation * 90}deg)`; // this will take the rotation value, multiply it by 90, and apply the resulting angle to the element.
 }
 
 function rotateWire2() {
   wire2Rotation = (wire2Rotation + 1) % 4;
-  wire2.style.transform = `rotate(${wire2Rotation * 90}deg)`;
+  wire2.querySelector('.wire-shape').style.transform = `rotate(${wire2Rotation * 90}deg)`;
 }
 
 function rotateWire3() {
   wire3Rotation = (wire3Rotation + 1) % 4;
-  wire3.style.transform = `rotate(${wire3Rotation * 90}deg)`;
+  wire3.querySelector('.wire-shape').style.transform = `rotate(${wire3Rotation * 90}deg)`;
   // (3 + 1 = 4) since 4 perfectly goes into 4, there is no remainder. So the value becomes 0. 
   // And since 0 * 90 = 0. It resets back to a 0 degree rotation, its original state.
 }
