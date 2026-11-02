@@ -817,6 +817,31 @@ body:has(.circuit-panel:not([hidden]))::before {
 
 
 
+/* Difficulty selection */
+.difficulty-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.difficulty-selection label {
+  font-weight: bold;
+}
+
+.difficulty-selection select {
+  padding: 10px;
+  border: 2px solid #19374b;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #19374b;
+  font: inherit;
+  cursor: pointer;
+}
+
+
+
 /* this is the mobile version of the layout for smaller screens. */
 @media(max-width:600px) {
   /* this reduces the padding on small screens so the game fits better. */
