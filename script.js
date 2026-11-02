@@ -146,6 +146,7 @@ function closeCircuitPanel() { // It will allow the player to leave the puzzle a
 
 // Create the rotation functions
 function rotateWire1() {
+  console.log('Wire 1 was clicked'); // temporarily here to make sure its being called
   wire1Rotation = (wire1Rotation + 1) % 4; // the remainder is there to loop the rotation state back to 0 so the numbers stay between 0 and 3.
   wire1.style.transform = `rotate(${wire1Rotation * 90}deg)`; // this will take the rotation value, multiply it by 90, and apply the resulting angle to the element.
 }
