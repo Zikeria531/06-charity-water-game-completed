@@ -163,6 +163,21 @@ function rotateWire3() {
   // And since 0 * 90 = 0. It resets back to a 0 degree rotation, its original state.
 }
 
+// Create a circuit validation function
+function testCircuit() {
+  if (wire1Rotation === 1 && wire2Rotation === 2 && wire3Rotation === 1) {
+    powerOn = true;
+
+    circuitFeedback.textContent = 'Circuit complete! Power has been restored.';
+    feedback.textContent = 'Power restored! The floodgate controls are operational.';
+
+    circuitPanel.hidden = true;
+    updateDisplay();
+  } else {
+    circuitFeedback.textContent = 'The circuit is incomplete. Check the wire connections.';
+  }
+}
+
 
 
 // Create a function for the floodgate control
@@ -258,6 +273,18 @@ function resetGame() {
 
   feedback.textContent = 'Press Start to restore the water supply.';
 
+  
+  wire1Rotation = 0;
+  wire2Rotation = 0;
+  wire3Rotation = 0;
+
+  wire1.querySelector('.wire-shape').style.transform = 'rotate(0deg)';
+  wire2.querySelector('.wire-shape').style.transform = 'rotate(0deg)';
+  wire3.querySelector('.wire-shape').style.transform = 'rotate(0deg)';
+
+  circuitFeedback.textContent = 'Connect the wires to restore power.';
+
+
   updateDisplay();
 }
 
@@ -275,6 +302,8 @@ closeCircuitBtn.addEventListener('click', closeCircuitPanel);
 wire1.addEventListener('click', rotateWire1);
 wire2.addEventListener('click', rotateWire2);
 wire3.addEventListener('click', rotateWire3);
+
+testCircuitBtn.addEventListener('click', testCircuit);
 
 // this checks the control statuses when trying to release the water
 releaseBtn.addEventListener('click', () => {
