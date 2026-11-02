@@ -759,6 +759,54 @@ body:has(.circuit-panel:not([hidden]))::before {
 }
 
 
+/* Charity: water footer */
+.charity-footer {
+  text-align: center;
+  padding: 25px 20px;
+  margin-top: 20px;
+  background: #ffffff;
+  border-top: 5px solid #FFC907;
+  border-radius: 12px;
+  color: #19374b;
+}
+
+.charity-footer h3 {
+  margin-bottom: 10px;
+}
+
+.charity-footer p {
+  max-width: 550px;
+  margin: 10px auto;
+  line-height: 1.5;
+}
+
+.charity-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.charity-links a {
+  background: #FFC907;
+  color: #19374b;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.charity-links a:hover {
+  background: #2E9DF7;
+}
+
+.charity-note {
+  font-size: 0.75rem;
+}
+
+
+
 
 /* this is the mobile version of the layout for smaller screens. */
 @media(max-width:600px) {
