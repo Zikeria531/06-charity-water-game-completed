@@ -43,6 +43,10 @@ let score = 0;
 let timerId = null;
 let animationId = null;
 
+// Each variable will keep track of how many times its wire has rotated
+let wire1Rotation = 0;
+let wire2Rotation = 0;
+let wire3Rotation = 0;
 
 
 // Create a function to update the UI
@@ -139,6 +143,25 @@ function togglePower() {
 function closeCircuitPanel() { // It will allow the player to leave the puzzle and come back later
   circuitPanel.hidden = true;
 }
+
+// Create the rotation functions
+function rotateWire1() {
+  wire1Rotation = (wire1Rotation + 1) % 4; // the remainder is there to loop the rotation state back to 0 so the numbers stay between 0 and 3.
+  wire1.style.transform = `rotate(${wire1Rotation * 90}deg)`; // this will take the rotation value, multiply it by 90, and apply the resulting angle to the element.
+}
+
+function rotateWire2() {
+  wire2Rotation = (wire2Rotation + 1) % 4;
+  wire2.style.transform = `rotate(${wire2Rotation * 90}deg)`;
+}
+
+function rotateWire3() {
+  wire3Rotation = (wire3Rotation + 1) % 4;
+  wire3.style.transform = `rotate(${wire3Rotation * 90}deg)`;
+  // (3 + 1 = 4) since 4 perfectly goes into 4, there is no remainder. So the value becomes 0. 
+  // And since 0 * 90 = 0. It resets back to a 0 degree rotation, its original state.
+}
+
 
 
 // Create a function for the floodgate control
@@ -246,6 +269,11 @@ safetyValve.addEventListener('click', toggleSafetyValve);
 startBtn.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
 closeCircuitBtn.addEventListener('click', closeCircuitPanel);
+
+// Add event listeners for the wire buttons
+wire1.addEventListener('click', rotateWire1);
+wire2.addEventListener('click', rotateWire2);
+wire3.addEventListener('click', rotateWire3);
 
 // this checks the control statuses when trying to release the water
 releaseBtn.addEventListener('click', () => {
