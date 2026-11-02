@@ -474,6 +474,62 @@ h1 {
 }
 
 
+/* Safety valve control */
+.valve-control {
+  width: 65px;
+  height: 75px;
+  background: #879aa6;
+  border: 3px solid #19374b;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Circular valve wheel */
+.valve-wheel {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border: 6px solid #e45b5b;
+  border-radius: 50%;
+  background: transparent;
+  transition: transform 0.4s ease;
+}
+
+/* Bar across the wheel */
+.valve-spoke {
+  position: absolute;
+  width: 35px;
+  height: 6px;
+  background: #e45b5b;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+}
+
+/* Rotate the wheel when the valve closes */
+.valve-control.active .valve-wheel {
+  transform: rotate(90deg);
+}
+
+/* Safety valve indicator */
+.valve-control .switch-indicator {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  background: #e45b5b;
+}
+
+/* Green indicator when the valve is closed */
+.valve-control.active .switch-indicator {
+  background: #42c77a;
+}
+
 
 /* this styles the text that says whether Gate 1 and Gate 2 are open or closed. */
 .gate-status {
