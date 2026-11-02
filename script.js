@@ -165,6 +165,7 @@ function rotateWire3() {
 
 // Create a circuit validation function
 function testCircuit() {
+  console.log('Wire rotations:', wire1Rotation, wire2Rotation, wire3Rotation); // just for testing
   if (wire1Rotation === 1 && wire2Rotation === 2 && wire3Rotation === 1) {
     powerOn = true;
 
