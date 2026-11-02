@@ -430,7 +430,7 @@ h1 {
 /* Floodgate control */
 .floodgate-control {
   width: 70px;
-  height: 60px;
+  height: 75px;
   background: #879aa6;
   border: 3px solid #19374b;
   border-radius: 12px;
@@ -443,7 +443,7 @@ h1 {
 .floodgate-lever {
   position: absolute;
   width: 12px;
-  height: 42px;
+  height: 38px;
   background: #19374b;
   border: 2px solid #ffffff;
   border-radius: 8px;
@@ -461,7 +461,7 @@ h1 {
 .floodgate-control .switch-indicator {
   position: absolute;
   width: 12px;
-  height: 42px;
+  height: 12px;
   top: 6px;
   right: 6px;
   border-radius: 50%;
