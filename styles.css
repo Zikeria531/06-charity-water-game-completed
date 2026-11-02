@@ -801,15 +801,19 @@ body:has(.circuit-panel:not([hidden]))::before {
   background: #2E9DF7;
 }
 
-/* Charity: water logo in the header */
-.charity-logo {
-  display: block;
-  width: 150px;
-  max-width: 100%;
+/* Align the watering can with the game title */
+.game-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Charity: water watering can */
+.can-logo {
+  width: 42px;
   height: auto;
   object-fit: contain;
 }
-
 
 
 
@@ -939,8 +943,8 @@ body:has(.circuit-panel:not([hidden]))::before {
   }
 
   /* Charity water logo */
-  .charity-logo {
-    width: 110px;
+  .can-logo {
+    width: 30px;
   }
 
 }
