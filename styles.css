@@ -380,6 +380,53 @@ h1 {
   background: #04be52;
 }
 
+
+/* Power breaker control */
+.breaker-control {
+  width: 65px;
+  height: 75px;
+  background: #dce7ed;
+  border: 3px solid #19374b;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lever on the breaker */
+.breaker-lever {
+  position: absolute;
+  width: 14px;
+  height: 35px;
+  background: #19374b;
+  border: 3px solid #ffffff;
+  border-radius: 7px;
+  transform: rotate(25deg);
+  transition: transform 0.3s ease;
+}
+
+/* Lever moves when power is restored */
+.breaker-control.active .breaker-lever {
+  transform: rotate(-25deg);
+}
+
+/* Breaker indicator light */
+.breaker-control .switch-indicator {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 7px;
+  right: 7px;
+  border-radius: 50%;
+  background: #e45b5b;
+}
+
+/* Indicator turns green when power is on */
+.breaker-control.active .switch-indicator {
+  background: #42c77a;
+}
+
+
 /* this styles the text that says whether Gate 1 and Gate 2 are open or closed. */
 .gate-status {
   display: flex;
