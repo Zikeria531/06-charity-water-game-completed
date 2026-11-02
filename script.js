@@ -30,6 +30,7 @@ const circuitFeedback = document.getElementById('circuitFeedback');
 const flow = document.getElementById('flow');
 const reservoirWater = document.getElementById('reservoirWater');
 const village = document.querySelector('.village');
+const difficultySelect = document.getElementById('difficulty'); // This allows JavaScript to read the difficulty the player selected.
 
 // Create and declare game state variables 
 let powerOn = false; // The pumping station has no power
@@ -222,6 +223,19 @@ function toggleSafetyValve() {
 }
 
 
+// Create a function to determine the time limit
+function getDifficultyTime() {
+  if (difficultySelect.value === 'easy') {
+    return 90;
+  } else if (difficultySelect.value === 'hard') {
+    return 30;
+  } else {
+    return 60;
+  }
+}
+
+
+
 // this starts the timer and sets the game into play mode.
 function startGame() {
   // if the game already started, don't start another timer.
@@ -237,6 +251,8 @@ function startGame() {
   feedback.textContent = 'The clock is running! Click the switches in the environment.';
   updateDisplay();
 
+  difficultySelect.disabled = true;
+  
   // this takes one second off the timer every second.
   timerId = setInterval(() => {
     seconds--;
@@ -260,6 +276,7 @@ function resetGame() {
 
   timerId = null;
   animationId = null;
+  difficultySelect.disabled = false; // This prevents players from changing the difficulty halfway through a round.
 
   powerOn = false;
   gateOpen = false;
@@ -267,7 +284,7 @@ function resetGame() {
 
   gameStarted = false;
   gameOver = false;
-  seconds = 60;
+  seconds = getDifficultyTime();
   score = 0;
 
   startBtn.disabled = false;
@@ -310,6 +327,15 @@ wire2.addEventListener('click', rotateWire2);
 wire3.addEventListener('click', rotateWire3);
 
 testCircuitBtn.addEventListener('click', testCircuit);
+
+// Create an event listener to update the timer when selecting a difficulty
+difficultySelect.addEventListener('change', () => {
+  if (!gameStarted) {
+    seconds = getDifficultyTime();
+    updateDisplay();
+  }
+});
+
 
 // this checks the control statuses when trying to release the water
 releaseBtn.addEventListener('click', () => {
