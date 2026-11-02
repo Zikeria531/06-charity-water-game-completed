@@ -455,6 +455,91 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+
+
+/* Power breaker circuit puzzle */
+.circuit-panel {
+  background: #ffffff;
+  border: 3px solid #19374b;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 6px 0 #19374b;
+}
+
+.circuit-panel[hidden] {
+  display: none;
+}
+
+.circuit-panel h2 {
+  margin-top: 0;
+  color: #19374b;
+}
+
+.circuit-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 10px;
+  margin: 18px 0;
+  background: #19374b;
+  border-radius: 12px;
+}
+
+.power-source,
+.power-output {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.wire-piece {
+  width: 65px;
+  height: 65px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  background: #2e9df7;
+  color: #ffc907;
+  font-size: 42px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.wire-piece:hover {
+  background: #2385d6;
+}
+
+#circuitFeedback {
+  font-weight: bold;
+  color: #19374b;
+}
+
+#testCircuitBtn,
+#closeCircuitBtn {
+  padding: 10px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#testCircuitBtn {
+  background: #ffc907;
+  color: #19374b;
+}
+
+#closeCircuitBtn {
+  background: #dce7ed;
+  color: #19374b;
+}
+
+
+
 /* this is the mobile version of the layout for smaller screens. */
 @media(max-width:600px) {
   /* this reduces the padding on small screens so the game fits better. */
