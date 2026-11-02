@@ -112,7 +112,7 @@ h1 {
 /* this is the big scene area where the sky, water, gates, and village are laid out. */
 .scene {
   position: relative;
-  aspect-ratio: 16/8;
+  aspect-ratio: 16/12;
   overflow: hidden;
   background: linear-gradient(#b8e3f5 0 67%,#9ecb91 67% 100%);
 }
@@ -469,7 +469,7 @@ h1 {
 /* Safety valve control */
 .valve-control {
   width: 65px;
-  height: 75px;
+  height: 70px;
   background: #879aa6;
   border: 3px solid #19374b;
   border-radius: 12px;
