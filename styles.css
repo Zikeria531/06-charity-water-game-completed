@@ -801,7 +801,7 @@ body:has(.circuit-panel:not([hidden]))::before {
 
   /* this makes the scene a little taller on phones so everything fits. */
   .scene {
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/12;
   }
 
   /* this shrinks the switch size a bit for mobile. */
