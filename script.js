@@ -30,6 +30,7 @@ const circuitFeedback = document.getElementById('circuitFeedback');
 const flow = document.getElementById('flow');
 const reservoirWater = document.getElementById('reservoirWater');
 const villageWater = document.getElementById('villageWater');
+const village = document.querySelector('.village');
 
 // Create and declare game state variables 
 let powerOn = false; // The pumping station has no power
@@ -117,6 +118,13 @@ function finishGame(won, message) {
   if (won) {
     score = 100 + seconds * 2;
     flow.classList.add('running');
+    
+    // Wait for the water to reach the village
+    animationId = setTimeout(() => {
+      village.classList.add('delivered');
+      feedback.textContent = 'Water Delivered! The village has clean water!';
+    }, 2400);
+
     reservoirWater.style.height = '18%';
   }
   updateDisplay();
@@ -269,6 +277,7 @@ function resetGame() {
   flow.classList.remove('running');
   reservoirWater.style.height = '76%';
   villageWater.classList.remove('full');
+  village.classList.remove('delivered'); // Remove the village's delivered state
 
   feedback.textContent = 'Press Start to restore the water supply.';
 
@@ -282,7 +291,7 @@ function resetGame() {
   wire3.querySelector('.wire-shape').style.transform = 'rotate(0deg)';
 
   circuitFeedback.textContent = 'Connect the wires to restore power.';
-
+  clearTimeout(animationId); // Clears the animation timeout
 
   updateDisplay();
 }
